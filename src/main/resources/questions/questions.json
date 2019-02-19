@@ -1,0 +1,22 @@
+[
+    {
+        "question": "Vraag 1B?",
+        "answers": [
+            "antwoord1",
+            "antwoord2",
+            "antwoord3",
+            "antwoord4",
+            "antwoord5"
+        ]
+    },
+    {
+        "question": "Vraag 2B?",
+        "answers": [
+            "antwoordVraag2 1",
+            "antwoordVraag2 2",
+            "antwoordVraag2 3",
+            "antwoordVraag2 4",
+            "antwoordVraag2 5"
+        ]
+    }
+]
