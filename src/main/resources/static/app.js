@@ -41,7 +41,11 @@ function sendName() {
 }
 
 function sendAnswer() {
-    stompClient.send("/app/answer", {}, JSON.stringify({'answer': $("#answerButton").val()}));
+    stompClient.send("/app/answer", {}, JSON.stringify({'answer': $("#answerButton").text()}));
+}
+
+function load() {
+    stompClient.send("/app/load", {}, JSON.stringify({'timePlayerTwo': $("#timePlayerTwo").val(), 'timePlayerOne': $("#timePlayerOne").val()}));
 }
 
 function showGreeting(message) {
@@ -49,7 +53,7 @@ function showGreeting(message) {
 }
 
 function showAnswer(answer) {
-    $("#answers").append("<tr><td>" + answer + "hjkl</td></tr>");
+    $("#answers").append("<tr><td>" + answer + "</td></tr>");
 }
 
 $(function () {
@@ -60,5 +64,6 @@ $(function () {
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#send" ).click(function() { sendName(); });
     $( "#answerButton" ).click(function() { sendAnswer(); });
-
+    $( "#load" ).click(function() { load(); });
+    connect();
 });

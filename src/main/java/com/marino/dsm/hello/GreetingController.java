@@ -17,7 +17,7 @@ public class GreetingController {
     @Autowired
     public GreetingController(ReadQuestionsUtil readQuestionsUtil){
         gameData = new GameData();
-        gameData.setQuestions(readQuestionsUtil.readQuestionsFile());
+        gameData.setGameQuestions(readQuestionsUtil.readQuestionsFile());
     }
 
     @MessageMapping("/hello")
@@ -30,7 +30,12 @@ public class GreetingController {
     @MessageMapping("/answer")
     @SendTo("/topic/answer")
     public Answer answer(Answer answer) throws Exception {
-        Thread.sleep(1000); // simulated delay
         return new Answer(answer.getAnswer());
+    }
+
+    @MessageMapping("/load")
+    @SendTo("/topic/loaded")
+    public String load(LoadGame loadGame){
+        return "blaat";
     }
 }
