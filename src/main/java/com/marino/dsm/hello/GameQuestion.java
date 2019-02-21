@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 public class GameQuestion {
     private String question;
     private Map<String, Boolean> answerMap;
+    private boolean done = false;
 
     public GameQuestion(){}
 
@@ -34,5 +35,13 @@ public class GameQuestion {
 
     public void setAnswerMap(Map<String, Boolean> answerMap) {
         this.answerMap = answerMap;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
     }
 }

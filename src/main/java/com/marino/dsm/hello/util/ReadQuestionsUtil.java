@@ -10,13 +10,15 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Component
 public class ReadQuestionsUtil {
 
-    public List<GameQuestion> readQuestionsFile() {
+    public Map<String,GameQuestion> readQuestionsFile() {
         try {
             ClassLoader classLoader = getClass().getClassLoader();
             File file = new File(classLoader.getResource("questions/questions.json").getFile());
@@ -31,7 +33,11 @@ public class ReadQuestionsUtil {
         }
     }
 
-    public List<GameQuestion> convertToGameQuestion(List<Question> questions) {
-        return questions.stream().map(question -> new GameQuestion(question.getQuestion(), question.getAnswers())).collect(Collectors.toList());
+    public Map<String, GameQuestion> convertToGameQuestion(List<Question> questions) {
+        LinkedHashMap<String, GameQuestion> blaat = questions.stream().collect(Collectors.toMap(a -> a.getQuestion(), a -> new GameQuestion(a.getQuestion(), a.getAnswers()), (u, v) -> {
+                    throw new IllegalStateException(String.format("Duplicate key %s", u));
+                },
+                LinkedHashMap::new));
+        return blaat;
     }
 }

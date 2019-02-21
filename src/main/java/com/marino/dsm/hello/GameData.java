@@ -1,14 +1,14 @@
 package com.marino.dsm.hello;
 
 
-import java.util.List;
+import java.util.Map;
 
 public class GameData {
 
     private int timePlayerOne;
     private int timePlayerTwo;
 
-    private List<GameQuestion> gameQuestions;
+    private Map<String, GameQuestion> gameQuestions;
 
     public int getTimePlayerOne() {
         return timePlayerOne;
@@ -26,11 +26,11 @@ public class GameData {
         this.timePlayerTwo = timePlayerTwo;
     }
 
-    public List<GameQuestion> getGameQuestions() {
+    public Map<String, GameQuestion> getGameQuestions() {
         return gameQuestions;
     }
 
-    public void setGameQuestions(List<GameQuestion> gameQuestions) {
+    public void setGameQuestions(Map<String, GameQuestion> gameQuestions) {
         this.gameQuestions = gameQuestions;
     }
 }
