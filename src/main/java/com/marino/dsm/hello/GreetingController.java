@@ -49,9 +49,10 @@ public class GreetingController {
     @MessageMapping("/next")
     @SendTo("/topic/loaded")
     public AnswerList next(){
+        //at same seconds the next round goes to the player who last answered
         if(gameData.getTimePlayerOne() < gameData.getTimePlayerTwo()){
             player1Active = true;
-        }else {
+        }else if(gameData.getTimePlayerOne() > gameData.getTimePlayerTwo()){
             player1Active = false;
         }
         currentQuestion.setDone(true);
