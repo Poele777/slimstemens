@@ -14,6 +14,8 @@ import java.util.Optional;
 @Controller
 public class GreetingController {
 
+    //TODO STOPWATCH http://jsfiddle.net/qHL8Z/3/
+
     private GameData gameData;
     private GameQuestion currentQuestion;
     private boolean player1Active = false;
