@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.util.HtmlUtils;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -14,23 +13,13 @@ import java.util.Optional;
 @Controller
 public class GreetingController {
 
-    //TODO STOPWATCH http://jsfiddle.net/qHL8Z/3/
-
     private GameData gameData;
     private GameQuestion currentQuestion;
-    private boolean player1Active = false;
 
     @Autowired
     public GreetingController(ReadQuestionsUtil readQuestionsUtil){
         gameData = new GameData();
         gameData.setGameQuestions(readQuestionsUtil.readQuestionsFile());
-    }
-
-    @MessageMapping("/hello")
-    @SendTo("/topic/greetings")
-    public Greeting greeting(HelloMessage message) throws Exception {
-        Thread.sleep(500); // simulated delay
-        return new Greeting("Hello, " + HtmlUtils.htmlEscape(message.getName()) + "!");
     }
 
     @MessageMapping("/answer")
@@ -49,14 +38,8 @@ public class GreetingController {
     }
 
     @MessageMapping("/next")
-    @SendTo("/topic/loaded")
+    @SendTo("/topic/next")
     public AnswerList next(){
-        //at same seconds the next round goes to the player who last answered
-        if(gameData.getTimePlayerOne() < gameData.getTimePlayerTwo()){
-            player1Active = true;
-        }else if(gameData.getTimePlayerOne() > gameData.getTimePlayerTwo()){
-            player1Active = false;
-        }
         currentQuestion.setDone(true);
         currentQuestion = findFirstNotDoneQuestion(gameData.getGameQuestions());
         return new AnswerList(new ArrayList<>(currentQuestion.getAnswerMap().keySet()));
@@ -71,18 +54,14 @@ public class GreetingController {
 
     @MessageMapping("/start")
     @SendTo("/topic/start")
-    public void start(){
-        //switchActivePlayer();
-    }
-
-    private void switchActivePlayer() {
-        player1Active = !player1Active;
+    public Dummy start(){
+        return new Dummy();
     }
 
     @MessageMapping("/stop")
     @SendTo("/topic/stop")
-    public void stop(){
-        switchActivePlayer();
+    public Dummy stop(){
+        return new Dummy();
     }
 
     private GameQuestion findFirstNotDoneQuestion(Map<String, GameQuestion> gameQuestions) {

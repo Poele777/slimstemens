@@ -21,6 +21,10 @@ function connect() {
             var answerList = JSON.parse(response.body);
             showAnswerList(answerList);
         });
+        stompClient.subscribe('/topic/next', function (response) {
+            var answerList = JSON.parse(response.body);
+            showAnswerList(answerList);
+        });
     });
 }
 
@@ -30,10 +34,6 @@ function disconnect() {
     }
     setConnected(false);
     console.log("Disconnected");
-}
-
-function sendAnswer() {
-    stompClient.send("/app/answer", {}, JSON.stringify({'answer': $("#answerButton").text()}));
 }
 
 function load() {
@@ -77,7 +77,6 @@ $(function () {
     });
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
-    $( "#answerButton" ).click(function() { sendAnswer(); });
     $( "#load" ).click(function() { load(); });
     $( "#next" ).click(function() { next(); });
     $( "#stop" ).click(function() { stop(); });
