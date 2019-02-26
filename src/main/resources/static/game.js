@@ -29,13 +29,13 @@ function connect() {
             hideAnswerLabels();
             showAnswerList(answerList);
             setTime(answerList);
-            isPlayerOneActive();
+            calculatePlayerOneActive();
         });
         stompClient.subscribe('/topic/next', function (response) {
             var answerList = JSON.parse(response.body);
             hideAnswerLabels();
             showAnswerList(answerList);
-            isPlayerOneActive();
+            calculatePlayerOneActive();
         });
         stompClient.subscribe('/topic/answerGiven', function (response) {
             var answer = JSON.parse(response.body);
@@ -83,13 +83,12 @@ function setTimePlayerTwo(value){
     timePlayerTwo = value;
 }
 
-function isPlayerOneActive(){
+function calculatePlayerOneActive(){
     if(timePlayerOne < timePlayerTwo){
         playerOneActive = true;
     }else if(timePlayerOne > timePlayerTwo){
         playerOneActive = false;
     }
-    return playerOneActive;
 }
 
 function showAnswerList(answerList) {
