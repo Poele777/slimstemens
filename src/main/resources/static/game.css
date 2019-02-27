@@ -1,0 +1,83 @@
+#btn1{
+    position: absolute;
+    left: 172px;
+    top: 658px;
+}
+
+#btn2{
+    position: absolute;
+    left: 740px;
+    top: 658px;
+}
+
+#btn3{
+    position: absolute;
+    left: 1309px;
+    top: 658px;
+}
+
+#btn4{
+    position: absolute;
+    left: 455px;
+    top: 861px;
+}
+
+#btn5{
+    position: absolute;
+    left: 1019px;
+    top: 861px;
+}
+
+#answer1Label{
+    position: absolute;
+    left: 322px;
+    top: 675px;
+}
+
+#answer2Label{
+    position: absolute;
+    left: 890px;
+    top: 675px;
+}
+
+#answer3Label{
+    position: absolute;
+    left: 1459px;
+    top: 675px;
+}
+
+#answer4Label{
+    position: absolute;
+    left: 605px;
+    top: 877px;
+}
+
+#answer5Label{
+    position: absolute;
+    left: 1169px;
+    top: 877px;
+}
+
+#timePlayerOneLabel{
+    position: absolute;
+    left: 811px;
+    top: 454px;
+}
+
+#timePlayerTwoLabel{
+    position: absolute;
+    left: 1012px;
+    top: 454px;
+}
+
+#timePlayerOneLabel,#timePlayerTwoLabel{
+    font-size: 55px;
+}
+
+div{
+    color: white;
+    font-size: 40px;
+    font-family: Arial;
+    font-weight: bold;
+    text-transform: uppercase;
+}

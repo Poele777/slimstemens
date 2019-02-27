@@ -1,49 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hello WebSocket</title>
+    <title>Finale slimste mens</title>
     <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/main.css" rel="stylesheet">
+    <link href="/game.css" rel="stylesheet">
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
     <script src="/game.js"></script>
 </head>
-<body>
+<body background="pics/finaleoverzichtBewerkt.png">
 <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
     enabled. Please enable
     Javascript and reload this page!</h2></noscript>
 <div id="main-content" class="container">
+    <img id="btn1" src="pics/btn20.png" alt="btn20">
+    <img id="btn2" src="pics/btn20.png" alt="btn20">
+    <img id="btn3" src="pics/btn20.png" alt="btn20">
+    <img id="btn4" src="pics/btn20.png" alt="btn20">
+    <img id="btn5" src="pics/btn20.png" alt="btn20">
+    <div id="answer1Label"></div>
+    <div id="answer2Label"></div>
+    <div id="answer3Label"></div>
+    <div id="answer4Label"></div>
+    <div id="answer5Label"></div>
+    <div id="timePlayerOneLabel"></div>
+    <div id="timePlayerTwoLabel"></div>
     <div class="row">
         <div class="col-md-6">
             <form class="form-inline">
                 <div class="form-group">
-                    <label for="connect">WebSocket connection:</label>
                     <button id="connect" class="btn btn-default" type="submit">Connect</button>
                     <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect
                     </button>
                 </div>
             </form>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <table id="conversation" class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Answers</th>
-                </tr>
-                </thead>
-                <tbody id="answers">
-                <tr>timePlayerOne: <input id="timePlayerOneLabel" type="text" name="timePlayerOneLabel" value=""></tr>
-                <tr>timePlayerTwo: <input id="timePlayerTwoLabel" type="text" name="timePlayerTwoLabel" value=""></tr>
-                <tr>answer 1: <input id="answer1Label" type="text" name="answer1Label" value=""></tr>
-                <tr>answer 2: <input id="answer2Label" type="text" name="answer2Label" value=""></tr>
-                <tr>answer 3: <input id="answer3Label" type="text" name="answer3Label" value=""></tr>
-                <tr>answer 4: <input id="answer4Label" type="text" name="answer4Label" value=""></tr>
-                <tr>answer 5: <input id="answer5Label" type="text" name="answer5Label" value=""></tr>
-                </tbody>
-            </table>
         </div>
     </div>
 </div>

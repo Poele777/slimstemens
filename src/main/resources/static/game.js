@@ -3,6 +3,7 @@ var timePlayerOne = 0;
 var timePlayerTwo = 0;
 var playerOneActive = true;
 var timer = null;
+var gameStarted = false;
 
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
@@ -71,7 +72,7 @@ function setTimePlayerOne(value){
     if(value < 0){
         value = 0;
     }
-    $("#timePlayerOneLabel").val(value);
+    $("#timePlayerOneLabel").text(value);
     timePlayerOne = value;
 }
 
@@ -79,7 +80,7 @@ function setTimePlayerTwo(value){
     if(value < 0){
         value = 0;
     }
-    $("#timePlayerTwoLabel").val(value);
+    $("#timePlayerTwoLabel").text(value);
     timePlayerTwo = value;
 }
 
@@ -92,11 +93,11 @@ function calculatePlayerOneActive(){
 }
 
 function showAnswerList(answerList) {
-    $("#answer1Label").val(answerList.answer1);
-    $("#answer2Label").val(answerList.answer2);
-    $("#answer3Label").val(answerList.answer3);
-    $("#answer4Label").val(answerList.answer4);
-    $("#answer5Label").val(answerList.answer5);
+    $("#answer1Label").text(answerList.answer1);
+    $("#answer2Label").text(answerList.answer2);
+    $("#answer3Label").text(answerList.answer3);
+    $("#answer4Label").text(answerList.answer4);
+    $("#answer5Label").text(answerList.answer5);
 }
 
 function hideAnswerLabels() {
@@ -105,54 +106,68 @@ function hideAnswerLabels() {
     $("#answer3Label").hide();
     $("#answer4Label").hide();
     $("#answer5Label").hide();
+    $("#btn1").hide();
+    $("#btn2").hide();
+    $("#btn3").hide();
+    $("#btn4").hide();
+    $("#btn5").hide();
 }
 
 function answerGiven(answer){
-    if($("#answer1Label").val() == answer){
+    if($("#answer1Label").text() == answer){
         $("#answer1Label").show();
+        $("#btn1").show();
     }
 
-    if($("#answer2Label").val() == answer){
+    if($("#answer2Label").text() == answer){
         $("#answer2Label").show();
+        $("#btn2").show();
     }
 
-    if($("#answer3Label").val() == answer){
+    if($("#answer3Label").text() == answer){
         $("#answer3Label").show();
+        $("#btn3").show();
     }
 
-    if($("#answer4Label").val() == answer){
+    if($("#answer4Label").text() == answer){
         $("#answer4Label").show();
+        $("#btn4").show();
     }
 
-    if($("#answer5Label").val() == answer){
+    if($("#answer5Label").text() == answer){
         $("#answer5Label").show();
+        $("#btn5").show();
     }
 
-    if(playerOneActive){
-        setTimePlayerTwo(timePlayerTwo - 20);
-    }else{
-        setTimePlayerOne(timePlayerOne - 20);
+    if (gameStarted) {
+        if (playerOneActive) {
+            setTimePlayerTwo(timePlayerTwo - 20);
+        } else {
+            setTimePlayerOne(timePlayerOne - 20);
+        }
     }
 }
 
 //STOPWATCH http://jsfiddle.net/qHL8Z/3/
 function start(){
+    gameStarted=true;
     if (playerOneActive) {
         if (timer !== null) return;
         timer = setInterval(function () {
             timePlayerOne = timePlayerOne - 1;
-            $("#timePlayerOneLabel").val(timePlayerOne);
+            $("#timePlayerOneLabel").text(timePlayerOne);
         }, 1000);
     } else {
         if (timer !== null) return;
         timer = setInterval(function () {
             timePlayerTwo = timePlayerTwo - 1;
-            $("#timePlayerTwoLabel").val(timePlayerTwo);
+            $("#timePlayerTwoLabel").text(timePlayerTwo);
         }, 1000);
     }
 }
 
 function stop(){
+    gameStarted=false;
     playerOneActive = !playerOneActive;
     clearInterval(timer);
     timer = null;
