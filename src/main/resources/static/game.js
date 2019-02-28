@@ -22,9 +22,6 @@ function connect() {
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/answer', function (greeting) {
-            showAnswer(JSON.parse(greeting.body).answer);
-        });
         stompClient.subscribe('/topic/loaded', function (response) {
             var answerList = JSON.parse(response.body);
             hideAnswerLabels();
@@ -57,10 +54,6 @@ function disconnect() {
     }
     setConnected(false);
     console.log("Disconnected");
-}
-
-function showAnswer(answer) {
-    $("#answers").append("<tr><td>" + answer + "</td></tr>");
 }
 
 function setTime(answerList){

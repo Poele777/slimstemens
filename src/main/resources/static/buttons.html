@@ -26,25 +26,37 @@
             </form>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <table id="conversation" class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Buttons</th>
-                </tr>
-                </thead>
-                <tbody id="buttons">
-                <tr>timePlayerOne: <input id="timePlayerOne" type="text" name="timePlayerOne" value="100"></tr>
-                <tr>timePlayerTwo: <input id="timePlayerTwo" type="text" name="timePlayerTwo" value="200"></tr>
-                <tr><button id="load" type="button">load</button></tr>
-                <tr><button id="next" type="button">next</button></tr>
-                <tr><button id="start" type="button">start</button></tr>
-                <tr><button id="stop" type="button">stop</button></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+    <table>
+        <thead>
+        <tr>
+            <th>Buttons</th>
+        </tr>
+        </thead>
+        <tbody id="buttons">
+        <tr><td>timePlayerOne: <input id="timePlayerOne" type="text" name="timePlayerOne" value="100"></td></tr>
+        <tr><td>timePlayerTwo: <input id="timePlayerTwo" type="text" name="timePlayerTwo" value="200"></td></tr>
+        <tr>
+            <td><button id="load" type="button">load</button></td>
+        </tr>
+        <tr>
+            <td><button id="next" type="button">next</button></td>
+        </tr>
+        <tr>
+            <td><button id="start" type="button">start</button></td>
+        </tr>
+        <tr>
+            <td><button id="stop" type="button">stop</button></td>
+        </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+        <tr>
+            <th>Answers</th>
+        </tr>
+        </thead>
+        <tbody id="answers">
+        </tbody>
+    </table>
 </body>
 </html>

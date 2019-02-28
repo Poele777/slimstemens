@@ -53,22 +53,22 @@ function stop() {
 }
 
 function showAnswerList(answerList) {
-    $("#buttons").empty();
-    $("#buttons").append("<button id ='answer1Id' type='button'>" + answerList.answer1 + "</button>");
+    $("#answers").empty();
+    $("#answers").append("<td><button id ='answer1Id' type='button'>" + answerList.answer1 + "</button></td>");
     $( "#answer1Id" ).click(function() { answerClick(answerList.answer1); });
-    $("#buttons").append("<button id ='answer2Id' type='button'>" + answerList.answer2 + "</button>");
+    $("#answers").append("<td><button id ='answer2Id' type='button'>" + answerList.answer2 + "</button></td>");
     $( "#answer2Id" ).click(function() { answerClick(answerList.answer2); });
-    $("#buttons").append("<button id ='answer3Id' type='button'>" + answerList.answer3 + "</button>");
+    $("#answers").append("<td><button id ='answer3Id' type='button'>" + answerList.answer3 + "</button></td>");
     $( "#answer3Id" ).click(function() { answerClick(answerList.answer3); });
-    $("#buttons").append("<button id ='answer4Id' type='button'>" + answerList.answer4 + "</button>");
+    $("#answers").append("<td><button id ='answer4Id' type='button'>" + answerList.answer4 + "</button></td>");
     $( "#answer4Id" ).click(function() { answerClick(answerList.answer4); });
-    $("#buttons").append("<button id ='answer5Id' type='button'>" + answerList.answer5 + "</button>");
+    $("#answers").append("<td><button id ='answer5Id' type='button'>" + answerList.answer5 + "</button></td>");
     $( "#answer5Id" ).click(function() { answerClick(answerList.answer5); });
 }
 
 function answerClick(value){
     stompClient.send("/app/answerGiven", {},value);
-    $("#buttons").append("<tr><td>" + value + "</td></tr>");
+    $("#answers").append("<tr><td>" + value + "</td></tr>");
 }
 
 $(function () {
