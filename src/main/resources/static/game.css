@@ -31,43 +31,55 @@
 #answer1Label{
     position: absolute;
     left: 322px;
-    top: 675px;
+    top: 648px;
 }
 
 #answer2Label{
     position: absolute;
     left: 890px;
-    top: 675px;
+    top: 648px;
 }
 
 #answer3Label{
     position: absolute;
     left: 1459px;
-    top: 675px;
+    top: 648px;
 }
 
 #answer4Label{
     position: absolute;
     left: 605px;
-    top: 877px;
+    top: 853px;
 }
 
 #answer5Label{
     position: absolute;
     left: 1169px;
-    top: 877px;
+    top: 853px;
+}
+#answer1Label,#answer2Label,#answer3Label,#answer4Label,#answer5Label{
+    height: 110px;
+    width: 400px;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #timePlayerOneLabel{
     position: absolute;
     left: 811px;
     top: 454px;
+    width: 97px;
+    text-align: center;
 }
 
 #timePlayerTwoLabel{
     position: absolute;
     left: 1012px;
     top: 454px;
+    width: 97px;
+    text-align: center;
 }
 
 #timePlayerOneLabel,#timePlayerTwoLabel{
