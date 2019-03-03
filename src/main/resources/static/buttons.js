@@ -72,11 +72,6 @@ function answerClick(value){
 }
 
 $(function () {
-    $("form").on('submit', function (e) {
-        e.preventDefault();
-    });
-    $( "#connect" ).click(function() { connect(); });
-    $( "#disconnect" ).click(function() { disconnect(); });
     $( "#load" ).click(function() { load(); });
     $( "#next" ).click(function() { next(); });
     $( "#stop" ).click(function() { stop(); });

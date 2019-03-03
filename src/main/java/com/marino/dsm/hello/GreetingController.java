@@ -34,7 +34,7 @@ public class GreetingController {
         gameData.setTimePlayerOne(loadGame.getTimePlayerOne());
         gameData.setTimePlayerTwo(loadGame.getTimePlayerTwo());
         currentQuestion = findFirstNotDoneQuestion(gameData.getGameQuestions());
-        return new AnswerList(loadGame.getTimePlayerOne(), loadGame.getTimePlayerTwo(), new ArrayList<>(currentQuestion.getAnswerMap().keySet()));
+        return new AnswerList(currentQuestion.getQuestion(), loadGame.getTimePlayerOne(), loadGame.getTimePlayerTwo(), new ArrayList<>(currentQuestion.getAnswerMap().keySet()));
     }
 
     @MessageMapping("/next")
@@ -42,7 +42,7 @@ public class GreetingController {
     public AnswerList next(){
         currentQuestion.setDone(true);
         currentQuestion = findFirstNotDoneQuestion(gameData.getGameQuestions());
-        return new AnswerList(new ArrayList<>(currentQuestion.getAnswerMap().keySet()));
+        return new AnswerList(currentQuestion.getQuestion(), new ArrayList<>(currentQuestion.getAnswerMap().keySet()));
     }
 
     @MessageMapping("/answerGiven")

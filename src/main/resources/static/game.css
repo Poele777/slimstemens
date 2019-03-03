@@ -100,6 +100,22 @@
     z-index: 1;
 }
 
+#questionLabel{
+    position: absolute;
+    left: 300px;
+    top: 100px;
+    height: 300px;
+    width: 1280px;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 60px;
+    color: black;
+    font-weight: normal;
+}
+
 div{
     color: white;
     font-size: 40px;

@@ -11,19 +11,21 @@ public class AnswerList {
     private String answer3;
     private String answer4;
     private String answer5;
+    private String question;
 
-    public AnswerList(int timePlayerOne, int timePlayerTwo, ArrayList<String> answers) {
-        this(answers);
+    public AnswerList(String question, int timePlayerOne, int timePlayerTwo, ArrayList<String> answers) {
+        this(question, answers);
         this.timePlayerOne = timePlayerOne;
         this.timePlayerTwo = timePlayerTwo;
     }
 
-    public AnswerList(List<String> answers){
-        answer1 = answers.get(0);
-        answer2 = answers.get(1);
-        answer3 = answers.get(2);
-        answer4 = answers.get(3);
-        answer5 = answers.get(4);
+    public AnswerList(String question, List<String> answers){
+        this.answer1 = answers.get(0);
+        this.answer2 = answers.get(1);
+        this.answer3 = answers.get(2);
+        this.answer4 = answers.get(3);
+        this.answer5 = answers.get(4);
+        this.question = question;
     }
 
     public String getAnswer1() {
@@ -80,5 +82,13 @@ public class AnswerList {
 
     public void setTimePlayerTwo(int timePlayerTwo) {
         this.timePlayerTwo = timePlayerTwo;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
     }
 }

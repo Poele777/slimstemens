@@ -26,6 +26,7 @@ function connect() {
             var answerList = JSON.parse(response.body);
             hideAnswerLabels();
             showAnswerList(answerList);
+            setQuestion(answerList.question);
             setTime(answerList);
             calculatePlayerOneActive();
             setActivePlayerButtons();
@@ -34,6 +35,7 @@ function connect() {
             var answerList = JSON.parse(response.body);
             hideAnswerLabels();
             showAnswerList(answerList);
+            setQuestion(answerList.question);
             calculatePlayerOneActive();
             setActivePlayerButtons();
         });
@@ -48,6 +50,15 @@ function connect() {
             stop();
         });
     });
+}
+
+function setQuestion(value) {
+    $("#questionLabel").text(value);
+    $("#questionLabel").hide();
+}
+
+function showQuestion() {
+    $("#questionLabel").show();
 }
 
 function setActivePlayerButtons() {
@@ -168,6 +179,7 @@ function answerGiven(answer){
 //STOPWATCH http://jsfiddle.net/qHL8Z/3/
 function start(){
     gameStarted=true;
+    showQuestion();
     if (playerOneActive) {
         if (timer !== null) return;
         timer = setInterval(function () {
@@ -196,11 +208,6 @@ function stop(){
 }
 
 $(function () {
-    $("form").on('submit', function (e) {
-        e.preventDefault();
-    });
-    $( "#connect" ).click(function() { connect(); });
-    $( "#disconnect" ).click(function() { disconnect(); });
     connect();
     hideAnswerLabels();
 });
