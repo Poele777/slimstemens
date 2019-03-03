@@ -28,12 +28,14 @@ function connect() {
             showAnswerList(answerList);
             setTime(answerList);
             calculatePlayerOneActive();
+            setActivePlayerButtons();
         });
         stompClient.subscribe('/topic/next', function (response) {
             var answerList = JSON.parse(response.body);
             hideAnswerLabels();
             showAnswerList(answerList);
             calculatePlayerOneActive();
+            setActivePlayerButtons();
         });
         stompClient.subscribe('/topic/answerGiven', function (response) {
             var answer = JSON.parse(response.body);
@@ -46,6 +48,28 @@ function connect() {
             stop();
         });
     });
+}
+
+function setActivePlayerButtons() {
+    if(playerOneActive){
+        setPlayerOneActive();
+    }else{
+        setPlayerTwoActive();
+    }
+}
+
+function setPlayerOneActive(){
+    $("#playerOneBlueLabel").show();
+    $("#playerOneRedLabel").hide();
+    $("#playerTwoBlueLabel").hide();
+    $("#playerTwoRedLabel").show();
+}
+
+function setPlayerTwoActive(){
+    $("#playerOneBlueLabel").hide();
+    $("#playerOneRedLabel").show();
+    $("#playerTwoBlueLabel").show();
+    $("#playerTwoRedLabel").hide();
 }
 
 function disconnect() {
@@ -162,6 +186,11 @@ function start(){
 function stop(){
     gameStarted=false;
     playerOneActive = !playerOneActive;
+    if(playerOneActive){
+        setPlayerOneActive();
+    }else{
+        setPlayerTwoActive();
+    }
     clearInterval(timer);
     timer = null;
 }

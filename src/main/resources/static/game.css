@@ -84,6 +84,20 @@
 
 #timePlayerOneLabel,#timePlayerTwoLabel{
     font-size: 55px;
+    z-index: 2;
+}
+
+#playerOneBlueLabel,#playerOneRedLabel{
+    position:absolute;
+    left: 804px;
+    top: 436px;
+    z-index: 1;
+}
+#playerTwoBlueLabel,#playerTwoRedLabel{
+    position: absolute;
+    left: 1003px;
+    top: 436px;
+    z-index: 1;
 }
 
 div{
