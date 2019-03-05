@@ -6,6 +6,8 @@ import java.util.List;
 public class AnswerList {
     private int timePlayerOne;
     private int timePlayerTwo;
+    private String namePlayerOne;
+    private String namePlayerTwo;
     private String answer1;
     private String answer2;
     private String answer3;
@@ -13,10 +15,12 @@ public class AnswerList {
     private String answer5;
     private String question;
 
-    public AnswerList(String question, int timePlayerOne, int timePlayerTwo, ArrayList<String> answers) {
+    public AnswerList(String question, int timePlayerOne, int timePlayerTwo,String namePlayerOne, String namePlayerTwo, ArrayList<String> answers) {
         this(question, answers);
         this.timePlayerOne = timePlayerOne;
         this.timePlayerTwo = timePlayerTwo;
+        this.namePlayerOne = namePlayerOne;
+        this.namePlayerTwo = namePlayerTwo;
     }
 
     public AnswerList(String question, List<String> answers){
@@ -90,5 +94,21 @@ public class AnswerList {
 
     public void setQuestion(String question) {
         this.question = question;
+    }
+
+    public String getNamePlayerOne() {
+        return namePlayerOne;
+    }
+
+    public void setNamePlayerOne(String namePlayerOne) {
+        this.namePlayerOne = namePlayerOne;
+    }
+
+    public String getNamePlayerTwo() {
+        return namePlayerTwo;
+    }
+
+    public void setNamePlayerTwo(String namePlayerTwo) {
+        this.namePlayerTwo = namePlayerTwo;
     }
 }

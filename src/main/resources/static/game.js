@@ -28,6 +28,7 @@ function connect() {
             showAnswerList(answerList);
             setQuestion(answerList.question);
             setTime(answerList);
+            setNames(answerList);
             calculatePlayerOneActive();
             setActivePlayerButtons();
         });
@@ -94,6 +95,11 @@ function disconnect() {
 function setTime(answerList){
     setTimePlayerOne(answerList.timePlayerOne);
     setTimePlayerTwo(answerList.timePlayerTwo);
+}
+
+function setNames(answerList) {
+    $("#namePlayerOneLabel").text(answerList.namePlayerOne);
+    $("#namePlayerTwoLabel").text(answerList.namePlayerTwo);
 }
 
 function setTimePlayerOne(value){

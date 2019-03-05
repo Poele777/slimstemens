@@ -37,7 +37,13 @@ function disconnect() {
 }
 
 function load() {
-    stompClient.send("/app/load", {}, JSON.stringify({'timePlayerTwo': $("#timePlayerTwo").val(), 'timePlayerOne': $("#timePlayerOne").val()}));
+    stompClient.send("/app/load", {}, JSON.stringify(
+        {
+            'timePlayerTwo': $("#timePlayerTwo").val(),
+            'timePlayerOne': $("#timePlayerOne").val(),
+            'namePlayerOne': $("#namePlayerOne").val(),
+            'namePlayerTwo': $("#namePlayerTwo").val()
+        }));
 }
 
 function next() {

@@ -34,7 +34,7 @@ public class GreetingController {
         gameData.setTimePlayerOne(loadGame.getTimePlayerOne());
         gameData.setTimePlayerTwo(loadGame.getTimePlayerTwo());
         currentQuestion = findFirstNotDoneQuestion(gameData.getGameQuestions());
-        return new AnswerList(currentQuestion.getQuestion(), loadGame.getTimePlayerOne(), loadGame.getTimePlayerTwo(), new ArrayList<>(currentQuestion.getAnswerMap().keySet()));
+        return new AnswerList(currentQuestion.getQuestion(), loadGame.getTimePlayerOne(), loadGame.getTimePlayerTwo(), loadGame.getNamePlayerOne(), loadGame.getNamePlayerTwo(), new ArrayList<>(currentQuestion.getAnswerMap().keySet()));
     }
 
     @MessageMapping("/next")
