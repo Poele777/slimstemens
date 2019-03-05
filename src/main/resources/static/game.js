@@ -173,6 +173,9 @@ function answerGiven(answer){
         $("#btn5").show();
     }
 
+    var audio = new Audio('PING.wav');
+    audio.play();
+
     if (gameStarted) {
         if (playerOneActive) {
             setTimePlayerTwo(timePlayerTwo - 20);

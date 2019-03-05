@@ -1,6 +1,16 @@
 [
     {
-        "question": "Vraag 1B?",
+        "question": "Welke 5 ingrediënten heb je volgens Piet Huzentruyt nodig als je een appelcake wil maken?",
+        "answers": [
+            "Appels",
+            "Boter",
+            "Bloem",
+            "Suiker",
+            "Eieren"
+        ]
+    },
+    {
+        "question": "Vraag 1?",
         "answers": [
             "antwoord1",
             "antwoord2",
@@ -10,7 +20,7 @@
         ]
     },
     {
-        "question": "Vraag 2B?",
+        "question": "Vraag 2?",
         "answers": [
             "antwoordVraag2 1",
             "antwoordVraag2 2",

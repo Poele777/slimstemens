@@ -1,22 +1,92 @@
 [
   {
-    "question": "Vraag 1?",
+    "question": "Wat weet je over Rushdie?",
     "answers": [
-      "antwoord1",
-      "antwoord2",
-      "antwoord3",
-      "antwoord4",
-      "antwoord5"
+      "Salman",
+      "De duivelsverzen",
+      "Fatwa",
+      "Indiër",
+      "Schrijver"
     ]
   },
   {
-    "question": "Vraag 2?",
+    "question": "Letland en Estland krijg je cadeau. Maar welke andere landen van de Europese Unie eindigen nog op land?",
     "answers": [
-      "antwoordVraag2 1",
-      "antwoordVraag2 2",
-      "antwoordVraag2 3",
-      "antwoordVraag2 4",
-      "antwoordVraag2 5"
+      "Finland",
+      "Nederland",
+      "Ierland",
+      "Griekenland",
+      "Duitsland"
+    ]
+  },
+  {
+    "question": "Wat weet je over Silvio Berlusconi?",
+    "answers": [
+      "Italiaan",
+      "Fraude",
+      "Seksschandaal",
+      "Premier",
+      "AC Milan"
+    ]
+  },
+  {
+    "question": "Welke 5 ingrediënten heb je volgens Piet Huysentruyt nodig als je een appelcake wil maken?",
+    "answers": [
+      "Appels",
+      "Boter",
+      "Bloem",
+      "Suiker",
+      "Eieren"
+    ]
+  },
+  {
+    "question": "Wat weet je nog over Columbus?",
+    "answers": [
+      "Ontdekkingsreiziger",
+      "Amerika",
+      "Italiaan",
+      "1492",
+      "Christoffel"
+    ]
+  },
+  {
+    "question": "Wat weet je over Chelsea Manning?",
+    "answers": [
+      "Amerikaanse",
+      "Soldate",
+      "Transgender",
+      "Bradley",
+      "Wikileaks"
+    ]
+  },
+  {
+    "question": "Wat weet je over Eva Perron?",
+    "answers": [
+      "Juan",
+      "Argentijnse",
+      "Presidentsvrouw",
+      "Evita",
+      "Dont cry for me, Argentina"
+    ]
+  },
+  {
+    "question": "Alicante en Palma zijn er al 2, maar op welke 5 bestemmingen vliegt Ryanair nog van uit Zaventem?",
+    "answers": [
+      "Valencia",
+      "Barcelona",
+      "Malaga",
+      "Madrid",
+      "Ibiza"
+    ]
+  },
+  {
+    "question": "Wat weet je over Arnold Schwarzenegger?",
+    "answers": [
+      "Acteur",
+      "Oostenrijk",
+      "Gouverneur",
+      "Bodybuilder",
+      "The Terminator"
     ]
   }
 ]

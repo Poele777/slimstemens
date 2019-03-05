@@ -100,6 +100,26 @@
     z-index: 1;
 }
 
+#namePlayerOneLabel{
+    left:50px;
+    top:436px;
+    text-align:left;
+    width:600px;
+}
+
+#namePlayerTwoLabel{
+    left:1270px;
+    top:436px;
+    text-align:right;
+    width:600px;
+}
+
+#namePlayerOneLabel,#namePlayerTwoLabel{
+    position: absolute;
+    color:black;
+    font-size: 50px;
+}
+
 #questionLabel{
     position: absolute;
     left: 300px;
@@ -112,8 +132,9 @@
     justify-content: center;
     text-align: center;
     font-size: 60px;
-    color: black;
+    color: white;
     font-weight: normal;
+    text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
 }
 
 div{
