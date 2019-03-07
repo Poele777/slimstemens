@@ -88,5 +88,105 @@
       "Bodybuilder",
       "The Terminator"
     ]
+  },
+  {
+    "question": "Wie zijn de laatste 5 premiers van het Verenigd Koninkrijk?",
+    "answers": [
+      "Theresa May",
+      "David Cameron",
+      "Tony Blair",
+      "Gordon Brown",
+      "John Major"
+    ]
+  },
+  {
+    "question": "Wat kan je me vertellen over Shakespeare?",
+    "answers": [
+      "Brit",
+      "Romeo & Julia",
+      "Hamlet",
+      "Toneelschrijver",
+      "William"
+    ]
+  },
+  {
+    "question": "Wat weet je over Matt LeBlanc?",
+    "answers": [
+      "Acteur",
+      "Friends",
+      "Joey",
+      "Amerikaan",
+      "Top Gear"
+    ]
+  },
+  {
+    "question": "Wat zijn bij Belgen de 5 populairste bestemmingen voor een city trip?",
+    "answers": [
+      "Barcelona",
+      "Parijs",
+      "Rome",
+      "Londen",
+      "Lissabon"
+    ]
+  },
+  {
+    "question": "Wat weet je over Miley Cirus ?",
+    "answers": [
+      "Amerikaanse",
+      "Zangeres",
+      "Billy Ray",
+      "Hannah Montana",
+      "Wrecking Ball"
+    ]
+  },
+  {
+    "question": "Welke mannelijke voornamen komen het meest voor in Vlaanderen?",
+    "answers": [
+      "Jan",
+      "Dirk",
+      "Marc",
+      "Patrick",
+      "Luc"
+    ]
+  },
+  {
+    "question": "Wat kan je me vertellen over Ensor?",
+    "answers": [
+      "James",
+      "Schilder",
+      "Oostende",
+      "Maskers",
+      "Filmprijzen"
+    ]
+  },
+  {
+    "question": "Wat weet je nog over Jeanne d’Arc?",
+    "answers": [
+      "100-jarige oorlog",
+      "Frans",
+      "Brandstapel",
+      "Maagd van Orléans",
+      "Heilig verklaard"
+    ]
+  },
+  {
+    "question": "Wat weet je over Radiohead?",
+    "answers": [
+      "Brits",
+      "Band",
+      "Thom Yorke",
+      "OK Computer",
+      "Creep"
+    ]
+  },
+  {
+    "question": "Welke landen moeten bang zijn als Kim-Jong Un nog eens op zijn knop drukt? En wel omdat ze er het dichtste bij liggen?",
+    "answers": [
+      "Japan",
+      "Zuid-Korea",
+      "China",
+      "Rusland",
+      "Mongolië"
+    ]
   }
 ]
