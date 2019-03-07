@@ -41,9 +41,16 @@ public class GreetingController {
 
     @MessageMapping("/answerGiven")
     @SendTo("/topic/answerGiven")
-    public LastAnswer answerGiven(String answer){
+    public Answer answerGiven(String answer){
         currentQuestion.getAnswerMap().put(answer, true);
-        return new LastAnswer(true);
+        boolean lastAnswer = true;
+        for(String key:currentQuestion.getAnswerMap().keySet()){
+            if(currentQuestion.getAnswerMap().get(key) == false){
+                lastAnswer = false;
+                break;
+            }
+        }
+        return new Answer(lastAnswer, answer);
     }
 
     @MessageMapping("/start")

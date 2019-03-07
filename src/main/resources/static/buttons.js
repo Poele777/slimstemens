@@ -26,9 +26,12 @@ function connect() {
             var answerList = JSON.parse(response.body);
             showAnswerList(answerList);
         });
-        stompClient.subscribe('/topic/next', function (response) {
-            var answerList = JSON.parse(response.body);
-            showAnswerList(answerList);
+        stompClient.subscribe('/topic/answerGiven', function (response) {
+            var answer = JSON.parse(response.body);
+            if(answer.lastAnswer == true){
+                clickCount = 2;
+                stop();
+            }
         });
     });
 }
@@ -53,6 +56,7 @@ function load() {
     $( "#load" ).prop('disabled', true);
     $( "#stop" ).prop('disabled', true);
     $( "#start" ).prop('disabled', false);
+    $( "#next" ).prop('disabled', true);
 }
 
 function next() {
@@ -60,6 +64,7 @@ function next() {
     clickCount = 0;
     $( "#start" ).prop('disabled', false);
     $( "#stop" ).prop('disabled', true);
+    $( "#next" ).prop('disabled', true);
 }
 
 function start() {
@@ -74,6 +79,8 @@ function stop() {
     $( "#stop" ).prop('disabled', true);
     if(clickCount < 2){
         $( "#start" ).prop('disabled', false);
+    }else{
+        $( "#next" ).prop('disabled', false);
     }
 }
 
@@ -119,5 +126,6 @@ $(function () {
 
     $( "#stop" ).prop('disabled', true);
     $( "#start" ).prop('disabled', true);
+    $( "#next" ).prop('disabled', true);
     connect();
 });

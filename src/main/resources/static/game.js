@@ -113,6 +113,8 @@ function setTimePlayerOne(value){
 function setTimePlayerTwo(value){
     if(value < 0){
         value = 0;
+        clearInterval(timer);
+        timer = null;
     }
     $("#timePlayerTwoLabel").text(value);
     timePlayerTwo = value;
@@ -173,9 +175,6 @@ function answerGiven(answer){
         $("#btn5").show();
     }
 
-    var audio = new Audio('PING.wav');
-    audio.play();
-
     if (gameStarted) {
         if (playerOneActive) {
             setTimePlayerTwo(timePlayerTwo - 20);
@@ -183,6 +182,9 @@ function answerGiven(answer){
             setTimePlayerOne(timePlayerOne - 20);
         }
     }
+
+    var audio = new Audio('PING.wav');
+    audio.play();
 }
 
 //STOPWATCH http://jsfiddle.net/qHL8Z/3/
