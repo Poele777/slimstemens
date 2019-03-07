@@ -22,12 +22,6 @@ public class GreetingController {
         gameData.setGameQuestions(readQuestionsUtil.readQuestionsFile());
     }
 
-    @MessageMapping("/answer")
-    @SendTo("/topic/answer")
-    public Answer answer(Answer answer) throws Exception {
-        return new Answer(answer.getAnswer());
-    }
-
     @MessageMapping("/load")
     @SendTo("/topic/loaded")
     public AnswerList load(LoadGame loadGame){
@@ -47,9 +41,9 @@ public class GreetingController {
 
     @MessageMapping("/answerGiven")
     @SendTo("/topic/answerGiven")
-    public Answer answerGiven(String answer){
+    public LastAnswer answerGiven(String answer){
         currentQuestion.getAnswerMap().put(answer, true);
-        return new Answer(answer);
+        return new LastAnswer(true);
     }
 
     @MessageMapping("/start")

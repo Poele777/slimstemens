@@ -1,4 +1,5 @@
 var stompClient = null;
+var clickCount = 0;
 
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
@@ -25,6 +26,10 @@ function connect() {
             var answerList = JSON.parse(response.body);
             showAnswerList(answerList);
         });
+        stompClient.subscribe('/topic/next', function (response) {
+            var answerList = JSON.parse(response.body);
+            showAnswerList(answerList);
+        });
     });
 }
 
@@ -44,32 +49,61 @@ function load() {
             'namePlayerOne': $("#namePlayerOne").val(),
             'namePlayerTwo': $("#namePlayerTwo").val()
         }));
+    clickCount = 0;
+    $( "#load" ).prop('disabled', true);
+    $( "#stop" ).prop('disabled', true);
+    $( "#start" ).prop('disabled', false);
 }
 
 function next() {
     stompClient.send("/app/next", {});
+    clickCount = 0;
+    $( "#start" ).prop('disabled', false);
+    $( "#stop" ).prop('disabled', true);
 }
 
 function start() {
     stompClient.send("/app/start", {});
+    clickCount++;
+    $( "#start" ).prop('disabled', true);
+    $( "#stop" ).prop('disabled', false);
 }
 
 function stop() {
     stompClient.send("/app/stop", {});
+    $( "#stop" ).prop('disabled', true);
+    if(clickCount < 2){
+        $( "#start" ).prop('disabled', false);
+    }
 }
 
 function showAnswerList(answerList) {
     $("#answers").empty();
     $("#answers").append("<td><button id ='answer1Id' type='button'>" + answerList.answer1 + "</button></td>");
-    $( "#answer1Id" ).click(function() { answerClick(answerList.answer1); });
+    $( "#answer1Id" ).click(function() {
+        answerClick(answerList.answer1);
+        $( "#answer1Id" ).prop('disabled', true);
+    });
     $("#answers").append("<td><button id ='answer2Id' type='button'>" + answerList.answer2 + "</button></td>");
-    $( "#answer2Id" ).click(function() { answerClick(answerList.answer2); });
+    $( "#answer2Id" ).click(function() {
+        answerClick(answerList.answer2);
+        $( "#answer2Id" ).prop('disabled', true);
+    });
     $("#answers").append("<td><button id ='answer3Id' type='button'>" + answerList.answer3 + "</button></td>");
-    $( "#answer3Id" ).click(function() { answerClick(answerList.answer3); });
+    $( "#answer3Id" ).click(function() {
+        answerClick(answerList.answer3);
+        $( "#answer3Id" ).prop('disabled', true);
+    });
     $("#answers").append("<td><button id ='answer4Id' type='button'>" + answerList.answer4 + "</button></td>");
-    $( "#answer4Id" ).click(function() { answerClick(answerList.answer4); });
+    $( "#answer4Id" ).click(function() {
+        answerClick(answerList.answer4);
+        $( "#answer4Id" ).prop('disabled', true);
+    });
     $("#answers").append("<td><button id ='answer5Id' type='button'>" + answerList.answer5 + "</button></td>");
-    $( "#answer5Id" ).click(function() { answerClick(answerList.answer5); });
+    $( "#answer5Id" ).click(function() {
+        answerClick(answerList.answer5);
+        $( "#answer5Id" ).prop('disabled', true);
+    });
 }
 
 function answerClick(value){
@@ -83,5 +117,7 @@ $(function () {
     $( "#stop" ).click(function() { stop(); });
     $( "#start" ).click(function() { start(); });
 
+    $( "#stop" ).prop('disabled', true);
+    $( "#start" ).prop('disabled', true);
     connect();
 });

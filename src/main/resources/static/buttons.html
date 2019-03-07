@@ -3,39 +3,61 @@
 <head>
     <title>Hello WebSocket</title>
     <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/main.css" rel="stylesheet">
+    <link href="/buttons.css" rel="stylesheet">
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
     <script src="/buttons.js"></script>
+
 </head>
 <body>
 <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
     enabled. Please enable
     Javascript and reload this page!</h2></noscript>
 <div id="main-content" class="container">
-    <table>
+    <table id="buttonsTable">
         <thead>
         <tr>
             <th>Buttons</th>
         </tr>
         </thead>
         <tbody id="buttons">
-        <tr><td>timePlayerOne: <input id="timePlayerOne" type="text" name="timePlayerOne" value="100"></td></tr>
-        <tr><td>timePlayerTwo: <input id="timePlayerTwo" type="text" name="timePlayerTwo" value="200"></td></tr>
-        <tr><td>namePlayerOne: <input id="namePlayerOne" type="text" name="namePlayerOne" value="Thomas"></td></tr>
-        <tr><td>namePlayerTwo: <input id="namePlayerTwo" type="text" name="namePlayerTwo" value="Ward"></td></tr>
         <tr>
-            <td><button id="load" type="button">load</button></td>
+            <td>
+                <button id="load" type="button">load</button>
+            </td>
+            <td>
+                <button id="next" type="button">next</button>
+            </td>
         </tr>
         <tr>
-            <td><button id="next" type="button">next</button></td>
+            <td>timePlayerOne:</td>
+            <td><input id="timePlayerOne" type="text" name="timePlayerOne" value="100"></td>
         </tr>
         <tr>
-            <td><button id="start" type="button">start</button></td>
+            <td>timePlayerTwo:</td>
+            <td><input id="timePlayerTwo" type="text" name="timePlayerTwo" value="200"></td>
         </tr>
         <tr>
-            <td><button id="stop" type="button">stop</button></td>
+            <td>namePlayerOne:</td>
+            <td><input id="namePlayerOne" type="text" name="namePlayerOne" value="Thomas"></td>
+        </tr>
+        <tr>
+            <td>namePlayerTwo:</td>
+            <td><input id="namePlayerTwo" type="text" name="namePlayerTwo" value="Ward"></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr>
+            <td>
+                <button id="start" type="button">start</button>
+            <td>
+                <button id="stop" type="button">stop</button>
+            </td>
+            </td>
         </tr>
         </tbody>
     </table>
