@@ -72,6 +72,7 @@ function start() {
     clickCount++;
     $( "#start" ).prop('disabled', true);
     $( "#stop" ).prop('disabled', false);
+    $("#coverup").css('display','none');
 }
 
 function stop() {
@@ -82,6 +83,7 @@ function stop() {
     }else{
         $( "#next" ).prop('disabled', false);
     }
+    $("#coverup").css('display','block');
 }
 
 function showAnswerList(answerList) {
