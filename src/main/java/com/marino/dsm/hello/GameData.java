@@ -2,6 +2,7 @@ package com.marino.dsm.hello;
 
 
 import java.util.Map;
+import java.util.Optional;
 
 public class GameData {
 
@@ -32,5 +33,13 @@ public class GameData {
 
     public void setGameQuestions(Map<String, GameQuestion> gameQuestions) {
         this.gameQuestions = gameQuestions;
+    }
+
+    public GameQuestion getCurrentQuestion(){
+        return findFirstNotDoneQuestion();
+    }
+    private GameQuestion findFirstNotDoneQuestion() {
+        Optional<Map.Entry<String, GameQuestion>> first = gameQuestions.entrySet().stream().filter(g -> !g.getValue().isDone()).findFirst();
+        return first.get().getValue();
     }
 }

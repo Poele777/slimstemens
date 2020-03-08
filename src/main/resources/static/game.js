@@ -22,9 +22,19 @@ function connect() {
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
+        stompClient.subscribe('/topic/reloaded', function (response) {
+            var answerList = JSON.parse(response.body);
+            hideAnswerLabels(answerList);
+            showAnswerList(answerList);
+            setQuestion(answerList.question);
+            setTime(answerList);
+            setNames(answerList);
+            calculatePlayerOneActive();
+            setActivePlayerButtons();
+        });
         stompClient.subscribe('/topic/loaded', function (response) {
             var answerList = JSON.parse(response.body);
-            hideAnswerLabels();
+            hideAnswerLabels(answerList);
             showAnswerList(answerList);
             setQuestion(answerList.question);
             setTime(answerList);
@@ -34,7 +44,7 @@ function connect() {
         });
         stompClient.subscribe('/topic/next', function (response) {
             var answerList = JSON.parse(response.body);
-            hideAnswerLabels();
+            hideAnswerLabels(answerList);
             showAnswerList(answerList);
             setQuestion(answerList.question);
             calculatePlayerOneActive();
@@ -49,6 +59,9 @@ function connect() {
         });
         stompClient.subscribe('/topic/stop', function (response) {
             stop();
+        });
+        stompClient.subscribe('/topic/continue', function (response) {
+            cont();
         });
     });
 }
@@ -136,17 +149,31 @@ function showAnswerList(answerList) {
     $("#answer5Label").text(answerList.answer5);
 }
 
-function hideAnswerLabels() {
-    $("#answer1Label").hide();
-    $("#answer2Label").hide();
-    $("#answer3Label").hide();
-    $("#answer4Label").hide();
-    $("#answer5Label").hide();
-    $("#btn1").hide();
-    $("#btn2").hide();
-    $("#btn3").hide();
-    $("#btn4").hide();
-    $("#btn5").hide();
+function hideAnswerLabels(answerlist) {
+    if (!answerlist.answered1) {
+        $("#answer1Label").hide();
+        $("#btn1").hide();
+    }
+
+    if (!answerlist.answered2) {
+        $("#answer2Label").hide();
+        $("#btn2").hide();
+    }
+
+    if (!answerlist.answered3) {
+        $("#answer3Label").hide();
+        $("#btn3").hide();
+    }
+
+    if (!answerlist.answered4) {
+        $("#answer4Label").hide();
+        $("#btn4").hide();
+    }
+
+    if (!answerlist.answered5) {
+        $("#answer5Label").hide();
+        $("#btn5").hide();
+    }
 }
 
 function answerGiven(answer){
@@ -216,6 +243,11 @@ function stop(){
     }
     clearInterval(timer);
     timer = null;
+}
+
+function cont(){
+    stop();
+    start();
 }
 
 $(function () {

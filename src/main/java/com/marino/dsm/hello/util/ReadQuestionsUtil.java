@@ -21,7 +21,10 @@ public class ReadQuestionsUtil {
     public Map<String,GameQuestion> readQuestionsFile() {
         try {
             ClassLoader classLoader = getClass().getClassLoader();
-            File file = new File(classLoader.getResource("questions/questions.json").getFile());
+            File file = new File("./questions.json");
+            if(!file.exists()) {
+                file = new File(classLoader.getResource("questions/questions.json").getFile());
+            }
             String json = new String(Files.readAllBytes(Paths.get(file.getAbsolutePath())));
             ObjectMapper objectMapper = new ObjectMapper();
             List<Question> questions = objectMapper.readValue(json, new TypeReference<List<Question>>() {

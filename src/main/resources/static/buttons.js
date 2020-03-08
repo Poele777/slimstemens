@@ -53,7 +53,22 @@ function load() {
             'namePlayerTwo': $("#namePlayerTwo").val()
         }));
     clickCount = 0;
-    $( "#load" ).prop('disabled', true);
+   // $( "#load" ).prop('disabled', true);
+    $( "#stop" ).prop('disabled', true);
+    $( "#start" ).prop('disabled', false);
+    $( "#next" ).prop('disabled', true);
+}
+
+function reload() {
+    stompClient.send("/app/reload", {}, JSON.stringify(
+        {
+            'timePlayerTwo': $("#timePlayerTwo").val(),
+            'timePlayerOne': $("#timePlayerOne").val(),
+            'namePlayerOne': $("#namePlayerOne").val(),
+            'namePlayerTwo': $("#namePlayerTwo").val()
+        }));
+    clickCount = 0;
+    // $( "#load" ).prop('disabled', true);
     $( "#stop" ).prop('disabled', true);
     $( "#start" ).prop('disabled', false);
     $( "#next" ).prop('disabled', true);
@@ -84,6 +99,14 @@ function stop() {
         $( "#next" ).prop('disabled', false);
     }
     $("#coverup").css('display','block');
+}
+
+function cont() {
+    stompClient.send("/app/continue", {});
+    $( "#start" ).prop('disabled', true);
+    $( "#stop" ).prop('disabled', false);
+    $( "#next" ).prop('disabled', true);
+    $("#coverup").css('display','none');
 }
 
 function showAnswerList(answerList) {
@@ -122,9 +145,11 @@ function answerClick(value){
 
 $(function () {
     $( "#load" ).click(function() { load(); });
+    $( "#reload" ).click(function() { reload(); });
     $( "#next" ).click(function() { next(); });
     $( "#stop" ).click(function() { stop(); });
     $( "#start" ).click(function() { start(); });
+    $( "#continue" ).click(function() { cont(); });
 
     $( "#stop" ).prop('disabled', true);
     $( "#start" ).prop('disabled', true);

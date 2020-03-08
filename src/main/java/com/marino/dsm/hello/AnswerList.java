@@ -2,6 +2,7 @@ package com.marino.dsm.hello;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class AnswerList {
     private int timePlayerOne;
@@ -13,9 +14,16 @@ public class AnswerList {
     private String answer3;
     private String answer4;
     private String answer5;
+
+    private boolean answered1;
+    private boolean answered2;
+    private boolean answered3;
+    private boolean answered4;
+    private boolean answered5;
+
     private String question;
 
-    public AnswerList(String question, int timePlayerOne, int timePlayerTwo,String namePlayerOne, String namePlayerTwo, ArrayList<String> answers) {
+    public AnswerList(String question, int timePlayerOne, int timePlayerTwo, String namePlayerOne, String namePlayerTwo, Map<String, Boolean> answers) {
         this(question, answers);
         this.timePlayerOne = timePlayerOne;
         this.timePlayerTwo = timePlayerTwo;
@@ -23,12 +31,19 @@ public class AnswerList {
         this.namePlayerTwo = namePlayerTwo;
     }
 
-    public AnswerList(String question, List<String> answers){
-        this.answer1 = answers.get(0);
-        this.answer2 = answers.get(1);
-        this.answer3 = answers.get(2);
-        this.answer4 = answers.get(3);
-        this.answer5 = answers.get(4);
+    public AnswerList(String question, Map<String, Boolean> answers){
+        List<String> answerList = new ArrayList<>(answers.keySet());
+        this.answer1 = answerList.get(0);
+        this.answer2 = answerList.get(1);
+        this.answer3 = answerList.get(2);
+        this.answer4 = answerList.get(3);
+        this.answer5 = answerList.get(4);
+        this.answered1 = answers.get(answer1);
+        this.answered2 = answers.get(answer2);
+        this.answered3 = answers.get(answer3);
+        this.answered4 = answers.get(answer4);
+        this.answered5 = answers.get(answer5);
+
         this.question = question;
     }
 
@@ -110,5 +125,45 @@ public class AnswerList {
 
     public void setNamePlayerTwo(String namePlayerTwo) {
         this.namePlayerTwo = namePlayerTwo;
+    }
+
+    public boolean isAnswered1() {
+        return answered1;
+    }
+
+    public void setAnswered1(boolean answered1) {
+        this.answered1 = answered1;
+    }
+
+    public boolean isAnswered2() {
+        return answered2;
+    }
+
+    public void setAnswered2(boolean answered2) {
+        this.answered2 = answered2;
+    }
+
+    public boolean isAnswered3() {
+        return answered3;
+    }
+
+    public void setAnswered3(boolean answered3) {
+        this.answered3 = answered3;
+    }
+
+    public boolean isAnswered4() {
+        return answered4;
+    }
+
+    public void setAnswered4(boolean answered4) {
+        this.answered4 = answered4;
+    }
+
+    public boolean isAnswered5() {
+        return answered5;
+    }
+
+    public void setAnswered5(boolean answered5) {
+        this.answered5 = answered5;
     }
 }

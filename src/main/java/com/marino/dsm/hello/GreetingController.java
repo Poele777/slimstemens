@@ -7,14 +7,11 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.Optional;
 
 @Controller
 public class GreetingController {
 
     private GameData gameData;
-    private GameQuestion currentQuestion;
 
     @Autowired
     public GreetingController(ReadQuestionsUtil readQuestionsUtil){
@@ -27,25 +24,30 @@ public class GreetingController {
     public AnswerList load(LoadGame loadGame){
         gameData.setTimePlayerOne(loadGame.getTimePlayerOne());
         gameData.setTimePlayerTwo(loadGame.getTimePlayerTwo());
-        currentQuestion = findFirstNotDoneQuestion(gameData.getGameQuestions());
-        return new AnswerList(currentQuestion.getQuestion(), loadGame.getTimePlayerOne(), loadGame.getTimePlayerTwo(), loadGame.getNamePlayerOne(), loadGame.getNamePlayerTwo(), new ArrayList<>(currentQuestion.getAnswerMap().keySet()));
+        return new AnswerList(gameData.getCurrentQuestion().getQuestion(), loadGame.getTimePlayerOne(), loadGame.getTimePlayerTwo(), loadGame.getNamePlayerOne(), loadGame.getNamePlayerTwo(), gameData.getCurrentQuestion().getAnswerMap());
+    }
+    @MessageMapping("/reload")
+    @SendTo("/topic/loaded")
+    public AnswerList reload(LoadGame loadGame){
+        gameData.setTimePlayerOne(loadGame.getTimePlayerOne());
+        gameData.setTimePlayerTwo(loadGame.getTimePlayerTwo());
+        return new AnswerList(gameData.getCurrentQuestion().getQuestion(), gameData.getTimePlayerOne(), gameData.getTimePlayerTwo(), loadGame.getNamePlayerOne(), loadGame.getNamePlayerTwo(), gameData.getCurrentQuestion().getAnswerMap());
     }
 
     @MessageMapping("/next")
     @SendTo("/topic/next")
     public AnswerList next(){
-        currentQuestion.setDone(true);
-        currentQuestion = findFirstNotDoneQuestion(gameData.getGameQuestions());
-        return new AnswerList(currentQuestion.getQuestion(), new ArrayList<>(currentQuestion.getAnswerMap().keySet()));
+        gameData.getCurrentQuestion().setDone(true);
+        return new AnswerList(gameData.getCurrentQuestion().getQuestion(), gameData.getCurrentQuestion().getAnswerMap());
     }
 
     @MessageMapping("/answerGiven")
     @SendTo("/topic/answerGiven")
     public Answer answerGiven(String answer){
-        currentQuestion.getAnswerMap().put(answer, true);
+        gameData.getCurrentQuestion().getAnswerMap().put(answer, true);
         boolean lastAnswer = true;
-        for(String key:currentQuestion.getAnswerMap().keySet()){
-            if(currentQuestion.getAnswerMap().get(key) == false){
+        for(String key:gameData.getCurrentQuestion().getAnswerMap().keySet()){
+            if(gameData.getCurrentQuestion().getAnswerMap().get(key) == false){
                 lastAnswer = false;
                 break;
             }
@@ -65,8 +67,10 @@ public class GreetingController {
         return new Dummy();
     }
 
-    private GameQuestion findFirstNotDoneQuestion(Map<String, GameQuestion> gameQuestions) {
-        Optional<Map.Entry<String, GameQuestion>> first = gameQuestions.entrySet().stream().filter(g -> !g.getValue().isDone()).findFirst();
-        return first.get().getValue();
+    @MessageMapping("/continue")
+    @SendTo("/topic/continue")
+    public Dummy cont(){
+        return new Dummy();
     }
+
 }
