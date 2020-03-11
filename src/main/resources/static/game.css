@@ -101,16 +101,16 @@
 }
 
 #namePlayerOneLabel{
-    left:50px;
-    top:436px;
-    text-align:left;
+    left:180px;
+    top:460px;
+    text-align:right;
     width:600px;
 }
 
 #namePlayerTwoLabel{
-    left:1270px;
-    top:436px;
-    text-align:right;
+    left:1145px;
+    top:460px;
+    text-align:left;
     width:600px;
 }
 
